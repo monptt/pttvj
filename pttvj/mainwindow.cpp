@@ -17,3 +17,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_cmdBtn_clicked()
+{
+    QString str = ui->cmdLine->text();
+    ui->cmdLine->clear();
+    qDebug() << str;
+}
