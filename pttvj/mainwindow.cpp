@@ -1,7 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QtCore/QDebug>
-#include <QMovie>
+
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+
+
 // コンストラクタ
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -9,6 +14,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     ui->setupUi(this);
 
     qDebug() << "MainWindow start";
+
+
+    // OpenCVで画像を読み込む
+    cv::Mat image = cv::imread("P:/pttvj/build-pttvj-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/debug/img/p.png");
+
+    if(image.empty()){
+        qDebug() << "empty!";
+    }else{
+        QImage qimage(image.data,
+                     image.cols, image.rows,
+                     QImage::Format_RGB888);
+        qimage = qimage.rgbSwapped();
+        ui->deck1->setPixmap(QPixmap::fromImage(qimage));
+
+        cv::imshow("opencv_logo", image);
+        cv::waitKey(0);
+    }
 
 }
 
