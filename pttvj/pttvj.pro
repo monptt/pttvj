@@ -2,7 +2,9 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++1z
+
+QMAKE_CXXFLAGS += /std:c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -25,6 +27,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 # OpenCV settings
-win32:DEPENDPATH  += "C:\opencv\build\include"
-win32:INCLUDEPATH += "C:\opencv\build\include"
-win32:LIBS +=      -L"C:\opencv\build\x64\vc15\lib"
+DEPENDPATH  += "C:\opencv\build\include"
+INCLUDEPATH += "C:\opencv\build\include"
+LIBS += "C:\opencv\build\x64\vc15\lib\opencv_world3413.lib"
+LIBS += "C:\opencv\build\x64\vc15\lib\opencv_world3413d.lib"
+
