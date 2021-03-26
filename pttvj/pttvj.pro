@@ -22,3 +22,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+# OpenCV settings
+win32:DEPENDPATH  += "C:\opencv\build\include"
+win32:INCLUDEPATH += "C:\opencv\build\include"
+win32:LIBS +=      -L"C:\opencv\build\x64\vc15\lib"

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QtCore/QDebug>
-
+#include <QMovie>
 // コンストラクタ
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     ui->setupUi(this);
 
     qDebug() << "MainWindow start";
+
 }
 
 // デストラクタ
