@@ -24,3 +24,10 @@ void MainWindow::on_cmdBtn_clicked()
     ui->cmdLine->clear();
     qDebug() << str;
 }
+
+void MainWindow::on_cmdLine_returnPressed()
+{
+    QString str = ui->cmdLine->text();
+    ui->cmdLine->clear();
+    qDebug() << str;
+}

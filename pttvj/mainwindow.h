@@ -20,6 +20,8 @@ public:
 private slots:
     void on_cmdBtn_clicked();
 
+    void on_cmdLine_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 };
