@@ -14,9 +14,14 @@ class DisplayWindow : public QWidget
 public:
     explicit DisplayWindow(QWidget *parent = nullptr);
     ~DisplayWindow();
+    bool fullscreen = false;
 
 private:
     Ui::DisplayWindow *ui;
+
+protected:
+    // 左クリック(LButtonDown)時に呼ばれる
+    void mousePressEvent(QMouseEvent *e);
 };
 
 #endif // DISPLAYWINDOW_H

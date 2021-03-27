@@ -5,6 +5,8 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 
+#include <QDebug>
+
 // コンストラクタ
 DisplayWindow::DisplayWindow(QWidget *parent) : QWidget(parent),ui(new Ui::DisplayWindow)
 {
@@ -27,4 +29,14 @@ DisplayWindow::DisplayWindow(QWidget *parent) : QWidget(parent),ui(new Ui::Displ
 DisplayWindow::~DisplayWindow()
 {
     delete ui;
+}
+
+void DisplayWindow::mousePressEvent(QMouseEvent *e){
+    if(this->fullscreen){
+        this->fullscreen = false;
+        this->showNormal();
+    }else{
+        this->fullscreen = true;
+        this->showFullScreen();
+    }
 }
