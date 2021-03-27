@@ -1,24 +1,28 @@
 #include "mainwindow.h"
-#include <QApplication>
+#include "displaywindow.h"
 
+#include <QApplication>
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 
-void aaaa(){
-    qDebug() << "aaaa";
+void timerTest(){
+    qDebug() << "timer test";
 }
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    MainWindow window;
-    window.setWindowTitle("pttvj - mainWindow");
-    window.show();
+    MainWindow *window = new MainWindow(NULL);
+//window->setWindowTitle("pttvj - mainWindow");
+    window->show();
+
+    DisplayWindow *displayWindow = new DisplayWindow(NULL);
+    displayWindow->show();
 
     QTimer *timer = new QTimer(NULL);
-    QObject::connect(timer, &QTimer::timeout, &app, aaaa);
-    timer->start(33);
+    QObject::connect(timer, &QTimer::timeout, &app, timerTest);
+    timer->start(1000);
 
     // メインループ開始
     return app.exec();
