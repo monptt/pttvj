@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     MainWindow *window = new MainWindow(NULL);
-//window->setWindowTitle("pttvj - mainWindow");
     window->show();
 
     DisplayWindow *displayWindow = new DisplayWindow(NULL);

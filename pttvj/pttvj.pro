@@ -12,12 +12,14 @@ QMAKE_CXXFLAGS += /std:c++17
 
 SOURCES += \
     cmd.cpp \
+    deck.cpp \
     displaywindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     cmd.h \
+    deck.h \
     displaywindow.h \
     mainwindow.h
 

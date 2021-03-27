@@ -16,8 +16,8 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 183);</string>
   </property>
-  <widget class="QWidget" name="cmdWidget">
-   <widget class="QWidget" name="widget" native="true">
+  <widget class="QWidget" name="wrapperWidget">
+   <widget class="QWidget" name="cmdWidget" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -62,8 +62,8 @@
    <widget class="QLabel" name="bpmLabel">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>220</y>
+      <x>440</x>
+      <y>230</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -80,37 +80,44 @@
      <string>BPM: 120</string>
     </property>
    </widget>
-   <widget class="QLabel" name="deck1">
+   <widget class="QWidget" name="decksWidget" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>30</y>
-      <width>261</width>
-      <height>171</height>
+      <y>0</y>
+      <width>521</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 194, 124);</string>
     </property>
-    <property name="text">
-     <string>deck1</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>30</y>
-      <width>251</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>deck2</string>
-    </property>
+    <widget class="QWidget" name="deckLWidget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>181</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(81, 0, 255);</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="deckRWidget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>30</y>
+       <width>181</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(81, 0, 255);</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
