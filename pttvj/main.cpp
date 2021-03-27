@@ -15,11 +15,16 @@ int main(int argc, char *argv[])
     Setting::initSetting();
     qDebug() << QString::fromStdString(Setting::exePath);
 
-    MainWindow *window = new MainWindow(NULL);
-    window->show();
+    MainWindow *mainWindow = new MainWindow(NULL);
+    mainWindow->show();
+
 
     DisplayWindow *displayWindow = new DisplayWindow(NULL);
     displayWindow->show();
+
+    DisplayWindow *preview = new DisplayWindow(mainWindow);
+    preview->setGeometry(300, 50, 240, 135);
+    preview->show();
 
     // 画像読み込みテスト
     Setting::deckL->setImageFile("p.png");
@@ -30,6 +35,7 @@ int main(int argc, char *argv[])
         Setting::deckL->updateFrame();
         Setting::deckR->updateFrame();
         displayWindow->updateFrame();
+        preview->updateFrame();
     });
     timer->start(1000);
 

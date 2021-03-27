@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,9 @@
    <widget class="QWidget" name="cmdWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>310</y>
-      <width>600</width>
+      <x>20</x>
+      <y>500</y>
+      <width>771</width>
       <height>60</height>
      </rect>
     </property>
@@ -32,7 +32,7 @@
     <widget class="QPushButton" name="cmdBtn">
      <property name="geometry">
       <rect>
-       <x>470</x>
+       <x>660</x>
        <y>10</y>
        <width>81</width>
        <height>41</height>
@@ -50,7 +50,7 @@
       <rect>
        <x>20</x>
        <y>20</y>
-       <width>441</width>
+       <width>621</width>
        <height>31</height>
       </rect>
      </property>
@@ -62,8 +62,8 @@
    <widget class="QLabel" name="bpmLabel">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>260</y>
+      <x>640</x>
+      <y>450</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -85,8 +85,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>571</width>
-      <height>261</height>
+      <width>771</width>
+      <height>411</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -95,8 +95,8 @@
     <widget class="QWidget" name="deckLWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>50</y>
+       <x>60</x>
+       <y>230</y>
        <width>240</width>
        <height>135</height>
       </rect>
@@ -108,8 +108,8 @@
     <widget class="QWidget" name="deckRWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>50</y>
+       <x>380</x>
+       <y>230</y>
        <width>240</width>
        <height>135</height>
       </rect>
@@ -125,7 +125,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>800</width>
      <height>21</height>
     </rect>
    </property>
