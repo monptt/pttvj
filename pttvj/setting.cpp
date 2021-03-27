@@ -4,6 +4,9 @@
 
 double Setting::bpm = 120;
 
+int Setting::cvWidth = 16*100;
+int Setting::cvHeight = 9*100;
+
 std::string Setting::exePath = "";
 
 Deck *Setting::deckL = NULL;

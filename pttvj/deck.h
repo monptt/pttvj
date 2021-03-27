@@ -9,9 +9,12 @@ class Deck : public QLabel
 public:
     Deck(const QString &text="", QWidget *parent=NULL);
     void updateFrame();
+    void setImageFile(std::string filename);
+
+    cv::Mat cvFrame;
 
 private:
-    cv::Mat cvFrame;
+    std::string frameMode;
 
 signals:
     // クリック時に発生させるシグナル

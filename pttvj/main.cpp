@@ -21,12 +21,15 @@ int main(int argc, char *argv[])
     DisplayWindow *displayWindow = new DisplayWindow(NULL);
     displayWindow->show();
 
+    // 画像読み込みテスト
+    Setting::deckL->setImageFile("p.png");
+    Setting::deckR->setImageFile("syaka.png");
     // 一定時間ごとに実行する処理を設定
     QTimer *timer = new QTimer(NULL);
     QObject::connect(timer, &QTimer::timeout, &app, [&](){
-        displayWindow->updateFrame();
         Setting::deckL->updateFrame();
         Setting::deckR->updateFrame();
+        displayWindow->updateFrame();
     });
     timer->start(1000);
 

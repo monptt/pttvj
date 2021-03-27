@@ -35,6 +35,11 @@ void DisplayWindow::mousePressEvent(QMouseEvent *e){
 }
 
 void DisplayWindow::updateFrame(){
+    cv::Mat frameL = Setting::deckL->cvFrame.clone();
+    cv::Mat frameR = Setting::deckR->cvFrame.clone();
+
+    this->cvFrame = frameL;
+
     if(this->cvFrame.empty()){
         qDebug()<<"empty image";
     }else{
@@ -42,7 +47,7 @@ void DisplayWindow::updateFrame(){
                      this->cvFrame.cols, this->cvFrame.rows,
                      QImage::Format_RGB888);
         qimage = qimage.rgbSwapped();
-
+        qimage = qimage.scaled(this->width(), this->height());
         ui->displayLabel->setPixmap(QPixmap::fromImage(qimage));
     }
 }

@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>290</y>
+      <y>310</y>
       <width>600</width>
       <height>60</height>
      </rect>
@@ -62,8 +62,8 @@
    <widget class="QLabel" name="bpmLabel">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>230</y>
+      <x>460</x>
+      <y>260</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -84,9 +84,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
-      <width>521</width>
-      <height>181</height>
+      <y>10</y>
+      <width>571</width>
+      <height>261</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -95,10 +95,10 @@
     <widget class="QWidget" name="deckLWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>30</y>
-       <width>181</width>
-       <height>121</height>
+       <x>20</x>
+       <y>50</y>
+       <width>240</width>
+       <height>135</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -108,10 +108,10 @@
     <widget class="QWidget" name="deckRWidget" native="true">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>30</y>
-       <width>181</width>
-       <height>121</height>
+       <x>300</x>
+       <y>50</y>
+       <width>240</width>
+       <height>135</height>
       </rect>
      </property>
      <property name="styleSheet">

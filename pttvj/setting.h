@@ -13,6 +13,9 @@ public:
     static std::string exePath;
     static double bpm;
 
+    static int cvHeight;
+    static int cvWidth;
+
     // Deckの実体はmainwindow.cpp内で宣言している
     static Deck *deckL;
     static Deck *deckR;
