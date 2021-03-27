@@ -6,6 +6,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 
+#include "cmd.h"
 
 // コンストラクタ
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
@@ -28,8 +29,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
         qimage = qimage.rgbSwapped();
         ui->deck1->setPixmap(QPixmap::fromImage(qimage));
 
-        cv::imshow("opencv_logo", image);
-        cv::waitKey(0);
     }
 
 }
@@ -50,7 +49,10 @@ void MainWindow::on_cmdBtn_clicked()
 
 void MainWindow::on_cmdLine_returnPressed()
 {
-    QString str = ui->cmdLine->text();
+    QString cmdStr = ui->cmdLine->text();
     ui->cmdLine->clear();
-    qDebug() << str;
+    qDebug() << cmdStr;
+
+    // コマンドを呼ぶ
+    cmd::hello(cmdStr);
 }
