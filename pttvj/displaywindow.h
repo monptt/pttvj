@@ -2,6 +2,7 @@
 #define DISPLAYWINDOW_H
 
 #include <QWidget>
+#include <opencv2/opencv.hpp>
 
 namespace Ui {
 class DisplayWindow;
@@ -14,9 +15,12 @@ class DisplayWindow : public QWidget
 public:
     explicit DisplayWindow(QWidget *parent = nullptr);
     ~DisplayWindow();
+
+    void updateFrame();
     bool fullscreen = false;
 
 private:
+    cv::Mat cvFrame;
     Ui::DisplayWindow *ui;
 
 protected:

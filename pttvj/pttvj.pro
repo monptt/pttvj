@@ -15,13 +15,15 @@ SOURCES += \
     deck.cpp \
     displaywindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    setting.cpp
 
 HEADERS += \
     cmd.h \
     deck.h \
     displaywindow.h \
-    mainwindow.h
+    mainwindow.h \
+    setting.h
 
 FORMS += \
     displaywindow.ui \

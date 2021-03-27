@@ -6,6 +6,8 @@ Deck::Deck(const QString &text, QWidget *parent) : QLabel(text, parent)
 {
     this->setStyleSheet("Deck {background-color:white;}");
     this->setFixedSize(parent->width(),parent->height());
+
+    this->cvFrame = cv::Mat::zeros(160, 90, CV_32F)+100;
 }
 
 // クリック時の動作
