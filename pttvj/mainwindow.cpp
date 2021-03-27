@@ -66,3 +66,8 @@ void MainWindow::on_cmdLine_returnPressed()
     // コマンドを呼ぶ
     cmd::hello(cmdStr);
 }
+
+void MainWindow::on_LRSlider_sliderMoved(int position)
+{
+    Setting::LR = position/100.0;
+}

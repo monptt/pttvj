@@ -22,6 +22,8 @@ private slots:
 
     void on_cmdLine_returnPressed();
 
+    void on_LRSlider_sliderMoved(int position);
+
 private:
     Ui::MainWindow *ui;
 };

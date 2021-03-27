@@ -38,7 +38,10 @@ void DisplayWindow::updateFrame(){
     cv::Mat frameL = Setting::deckL->cvFrame.clone();
     cv::Mat frameR = Setting::deckR->cvFrame.clone();
 
-    this->cvFrame = frameL;
+    cv::Mat mixedFrame;
+    cv::addWeighted(frameL, (1-Setting::LR), frameR, Setting::LR, 0, mixedFrame);
+
+    this->cvFrame = mixedFrame.clone();
 
     if(this->cvFrame.empty()){
         qDebug()<<"empty image";

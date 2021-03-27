@@ -20,6 +20,7 @@ public:
     static Deck *deckL;
     static Deck *deckR;
 
+    static double LR;
 
     static void initSetting();
 };

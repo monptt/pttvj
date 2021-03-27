@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         displayWindow->updateFrame();
         preview->updateFrame();
     });
-    timer->start(1000);
+    timer->start(100);
 
     // メインループ開始
     return app.exec();

@@ -3,6 +3,7 @@
 #include <QDebug>
 
 double Setting::bpm = 120;
+double Setting::LR=0;
 
 int Setting::cvWidth = 16*100;
 int Setting::cvHeight = 9*100;

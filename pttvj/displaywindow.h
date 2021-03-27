@@ -19,7 +19,6 @@ public:
     void updateFrame();
     bool fullscreen = false;
 
-
 private:
     cv::Mat cvFrame;
     Ui::DisplayWindow *ui;
