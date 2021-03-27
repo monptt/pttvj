@@ -8,6 +8,7 @@
 
 #include "cmd.h"
 #include "deck.h"
+#include "setting.h"
 
 // コンストラクタ
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
@@ -17,9 +18,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     qDebug() << "MainWindow start";
 
+    // デッキ
     Deck *deckL = new Deck("deckL", ui->deckLWidget);
+    Setting::deckL = deckL;
     deckL->show();
     Deck *deckR = new Deck("deckR", ui->deckRWidget);
+    Setting::deckR = deckR;
     deckR->show();
 
     // OpenCVで画像を読み込む

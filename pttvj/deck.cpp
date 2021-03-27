@@ -22,3 +22,16 @@ void Deck::mousePressEvent(QMouseEvent *e)
     // シグナル送信
     emit clicked();
 }
+
+void Deck::updateFrame(){
+    if(this->cvFrame.empty()){
+        qDebug()<<"empty image";
+    }else{
+        QImage qimage(this->cvFrame.data,
+                     this->cvFrame.cols, this->cvFrame.rows,
+                     QImage::Format_RGB888);
+        qimage = qimage.rgbSwapped();
+
+        this->setPixmap(QPixmap::fromImage(qimage));
+    }
+}

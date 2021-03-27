@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
     QTimer *timer = new QTimer(NULL);
     QObject::connect(timer, &QTimer::timeout, &app, [&](){
         displayWindow->updateFrame();
+        Setting::deckL->updateFrame();
+        Setting::deckR->updateFrame();
     });
     timer->start(1000);
 
