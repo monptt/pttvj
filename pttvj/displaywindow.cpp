@@ -24,10 +24,11 @@ DisplayWindow::~DisplayWindow()
 }
 
 // 画面クリックでフルスクリーンに
-void DisplayWindow::mousePressEvent(QMouseEvent *e){
+void DisplayWindow::mouseReleaseEvent(QMouseEvent *e){
     if(this->fullscreen){
         this->fullscreen = false;
         this->showNormal();
+        this->setFixedSize(640,360);
     }else{
         this->fullscreen = true;
         this->showFullScreen();
@@ -35,8 +36,8 @@ void DisplayWindow::mousePressEvent(QMouseEvent *e){
 }
 
 void DisplayWindow::updateFrame(){
-    cv::Mat frameL = Setting::deckL->cvFrame.clone();
-    cv::Mat frameR = Setting::deckR->cvFrame.clone();
+    cv::Mat frameL = Setting::deckL->cvFrame;
+    cv::Mat frameR = Setting::deckR->cvFrame;
 
     cv::Mat mixedFrame;
     cv::addWeighted(frameL, (1-Setting::LR), frameR, Setting::LR, 0, mixedFrame);

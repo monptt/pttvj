@@ -27,8 +27,11 @@ int main(int argc, char *argv[])
     preview->show();
 
     // 画像読み込みテスト
-    Setting::deckL->setImageFile("p.png");
-    Setting::deckR->setImageFile("syaka.png");
+    //Setting::deckL->setImageFile("p.png");
+    Setting::deckL->setVideoFile("papapa.mp4");
+    //Setting::deckR->setImageFile("syaka.png");
+    Setting::deckR->setVideoFile("tomadoi.mp4");
+
     // 一定時間ごとに実行する処理を設定
     QTimer *timer = new QTimer(NULL);
     QObject::connect(timer, &QTimer::timeout, &app, [&](){
@@ -37,7 +40,7 @@ int main(int argc, char *argv[])
         displayWindow->updateFrame();
         preview->updateFrame();
     });
-    timer->start(100);
+    timer->start(33);
 
     // メインループ開始
     return app.exec();

@@ -16,5 +16,4 @@ Deck *Setting::deckR = NULL;
 void Setting::initSetting(){
     // 実行ファイルのパスを取得
     Setting::exePath = QApplication::applicationDirPath().toStdString();
-
 }

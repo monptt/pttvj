@@ -1,6 +1,7 @@
 #include <QDebug>
 #include <QFileDialog>
-
+#include <QWidget>
+#include <QMouseEvent>
 #include "deck.h"
 #include "setting.h"
 
@@ -9,24 +10,40 @@ Deck::Deck(const QString &text, QWidget *parent) : QLabel(text, parent)
     this->setStyleSheet("Deck {background-color:white;}");
     this->setFixedSize(parent->width(),parent->height());
 
-    this->frameMode = "image";
-    this->cvFrame = cv::Mat::zeros(this->height(), this->width(), CV_32F)+100;
+    // 初期画像をセット
+    this->setImageFile("p.png");
 }
 
 // クリック時の動作
-void Deck::mousePressEvent(QMouseEvent *e)
+void Deck::mouseReleaseEvent(QMouseEvent *e)
 {
     qDebug() << "Deck clicked";
 
-    // クリックでファイル読み込み
-    QFileDialog::getOpenFileName(this, tr("Load image or video from File"), "c:/",
-                                 tr("Text files(*.txt);;All Files(*.*)"));
+    if(e->button()==Qt::RightButton){
+        // 右クリックでファイル読み込み
+        QFileDialog::getOpenFileName(this, tr("Load image or video from File"), "c:/",
+                                     tr("png(*.png);;All Files(*.*)"));
+    }
 
     // シグナル送信
     emit clicked();
 }
 
 void Deck::updateFrame(){
+    if(this->frameMode=="image"){
+        //画像の場合setしてから更新なし
+    }else if(this->frameMode=="video"){
+        // 映像ファイルの場合，videoCaptureから読み込み
+        cv::Mat newFrame;
+        this->videoCapture >> newFrame;
+        if(!newFrame.empty()){
+            cv::Mat img_resized;
+            cv::resize(newFrame, img_resized, cv::Size(Setting::cvWidth,Setting::cvHeight));
+            this->cvFrame = img_resized.clone();
+        }
+    }
+
+    // QLabelに表示
     if(this->cvFrame.empty()){
         qDebug()<<"empty image";
     }else{
@@ -42,8 +59,14 @@ void Deck::updateFrame(){
 }
 
 void Deck::setImageFile(std::string filename){
-    cv::Mat img = cv::imread(Setting::exePath+"/img/"+filename);
+    this->frameMode = "image";
+    cv::Mat img = cv::imread(Setting::exePath+"/image/"+filename);
     cv::Mat img_resized;
     cv::resize(img, img_resized, cv::Size(Setting::cvWidth,Setting::cvHeight));
     this->cvFrame = img_resized.clone();
+}
+
+void Deck::setVideoFile(std::string filename){
+    this->frameMode = "video";
+    this->videoCapture = cv::VideoCapture(Setting::exePath+"/video/"+filename);
 }

@@ -25,7 +25,7 @@ private:
 
 protected:
     // 左クリック(LButtonDown)時に呼ばれる
-    void mousePressEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *e);
 };
 
 #endif // DISPLAYWINDOW_H
