@@ -11,7 +11,7 @@ Deck::Deck(const QString &text, QWidget *parent) : QLabel(text, parent)
     this->setFixedSize(parent->width(),parent->height());
 
     // 初期画像をセット
-    this->setImageFile("p.png");
+    this->setImageFile(Setting::exePath+"/resources/"+"empty.jpg");
 }
 
 // クリック時の動作
@@ -41,7 +41,7 @@ void Deck::updateFrame(){
 
         if(!newFrame.empty()){
             cv::Mat img_resized;
-            cv::resize(newFrame, img_resized, cv::Size(Setting::cvWidth,Setting::cvHeight));
+            cv::resize(newFrame, img_resized, cv::Size(Setting::cvWidth,Setting::cvHeight), cv::INTER_AREA);
             this->cvFrame = img_resized.clone();
         }
     }
@@ -61,15 +61,15 @@ void Deck::updateFrame(){
     }
 }
 
-void Deck::setImageFile(std::string filename){
+void Deck::setImageFile(std::string filePath){
     this->frameMode = "image";
-    cv::Mat img = cv::imread(Setting::exePath+"/image/"+filename);
+    cv::Mat img = cv::imread(filePath);
     cv::Mat img_resized;
     cv::resize(img, img_resized, cv::Size(Setting::cvWidth,Setting::cvHeight));
     this->cvFrame = img_resized.clone();
 }
 
-void Deck::setVideoFile(std::string filename){
+void Deck::setVideoFile(std::string filePath){
     this->frameMode = "video";
-    this->videoCapture = cv::VideoCapture(Setting::exePath+"/video/"+filename);
+    this->videoCapture = cv::VideoCapture(filePath);
 }

@@ -8,8 +8,8 @@ class Deck : public QLabel
     Q_OBJECT
 public:
     Deck(const QString &text="", QWidget *parent=NULL);
-    void setImageFile(std::string filename);
-    void setVideoFile(std::string filename);
+    void setImageFile(std::string filePath);
+    void setVideoFile(std::string filePath);
 
     void updateFrame();
     cv::Mat cvFrame;

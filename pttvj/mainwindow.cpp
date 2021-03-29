@@ -51,20 +51,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_cmdBtn_clicked()
 {
-    QString str = ui->cmdLine->text();
+    QString cmdStr = ui->cmdLine->text();
     ui->cmdLine->clear();
-    qDebug() << str;
 
+    // コマンドを呼ぶ
+//    cmd::processor(cmdStr);
 }
 
 void MainWindow::on_cmdLine_returnPressed()
 {
     QString cmdStr = ui->cmdLine->text();
     ui->cmdLine->clear();
-    qDebug() << cmdStr;
 
     // コマンドを呼ぶ
-    cmd::hello(cmdStr);
+//    cmd::processor(cmdStr);
+    cmd::hello();
 }
 
 void MainWindow::on_LRSlider_sliderMoved(int position)

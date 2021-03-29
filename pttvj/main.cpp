@@ -25,14 +25,14 @@ int main(int argc, char *argv[])
     displayWindow->show();
 
     DisplayWindow *preview = new DisplayWindow(mainWindow);
-    preview->setGeometry(300, 50, 240, 135);
+    preview->setGeometry(250, 50, 320, 180);
     preview->show();
 
     // 画像読み込みテスト
 //    Setting::deckL->setImageFile("p.png");
-    Setting::deckL->setVideoFile("papapa.mp4");
+//    Setting::deckL->setVideoFile("papapa.mp4");
 //    Setting::deckR->setImageFile("syaka.png");
-    Setting::deckR->setVideoFile("tomadoi.mp4");
+//    Setting::deckR->setVideoFile("tomadoi.mp4");
 
 
     // 一定時間ごとに実行する処理を設定
