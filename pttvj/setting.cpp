@@ -17,3 +17,6 @@ void Setting::initSetting(){
     // 実行ファイルのパスを取得
     Setting::exePath = QApplication::applicationDirPath().toStdString();
 }
+
+// 今のフレームで処理されるべき時間(ms)
+int Setting::t_to_process = 0;

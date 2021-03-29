@@ -35,7 +35,10 @@ void Deck::updateFrame(){
     }else if(this->frameMode=="video"){
         // 映像ファイルの場合，videoCaptureから読み込み
         cv::Mat newFrame;
-        this->videoCapture >> newFrame;
+        for(int i=0; i<Setting::t_to_process/33; i++){
+            this->videoCapture >> newFrame;
+        }
+
         if(!newFrame.empty()){
             cv::Mat img_resized;
             cv::resize(newFrame, img_resized, cv::Size(Setting::cvWidth,Setting::cvHeight));
