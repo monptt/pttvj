@@ -64,8 +64,7 @@ void MainWindow::on_cmdLine_returnPressed()
     ui->cmdLine->clear();
 
     // コマンドを呼ぶ
-//    cmd::processor(cmdStr);
-    cmd::hello();
+    cmd::readCmd(cmdStr);
 }
 
 void MainWindow::on_LRSlider_sliderMoved(int position)
