@@ -11,6 +11,7 @@ private:
 
 public:
     static std::string exePath;
+
     static double bpm;
     static void setBpm(int bpm);
 

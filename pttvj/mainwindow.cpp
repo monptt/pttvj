@@ -2,10 +2,12 @@
 #include "ui_mainwindow.h"
 #include <QtCore/QDebug>
 #include <QLabel>
+#include <QKeyEvent>
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <string>
+#include <cmath>
 #include "cmd.h"
 #include "deck.h"
 #include "setting.h"
@@ -67,11 +69,35 @@ void MainWindow::on_cmdLine_returnPressed()
     cmd::readCmd(cmdStr);
 }
 
-void MainWindow::on_LRSlider_sliderMoved(int position)
-{
-    Setting::LR = position/100.0;
-}
 
 void MainWindow::updateFrame(){
     ui->bpmLabel->setText(QString::fromStdString(std::_Floating_to_string("%3.1lf",Setting::bpm)));
+    ui->LRSlider->setValue(std::round(Setting::LR*100));
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event){
+    int key = event->key();
+    if(ui->cmdLine->hasFocus()){
+        if(key == Qt::Key_Escape){
+            this->setFocus();
+        }
+    }else{
+        if(key == Qt::Key_Escape){
+            ui->cmdLine->setFocus();
+        }
+    }
+}
+void MainWindow::keyReleaseEvent(QKeyEvent *event){
+    char key = event->key();
+    if(ui->cmdLine->hasFocus()){
+
+    }else{
+
+    }
+}
+
+
+void MainWindow::on_LRSlider_valueChanged(int value)
+{
+        Setting::LR = value/100.0;
 }

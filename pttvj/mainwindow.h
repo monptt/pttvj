@@ -23,7 +23,9 @@ private slots:
 
     void on_cmdLine_returnPressed();
 
-    void on_LRSlider_sliderMoved(int position);
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    void on_LRSlider_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
