@@ -3,6 +3,10 @@
 #include <QDebug>
 
 double Setting::bpm = 120;
+void Setting::setBpm(int bpm){
+    Setting::bpm = bpm;
+}
+
 double Setting::LR=0;
 
 int Setting::cvWidth = 16*100;

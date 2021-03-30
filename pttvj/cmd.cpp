@@ -7,7 +7,7 @@ typedef std::vector<std::string> Args;
 
 namespace cmd{
 
-int setvideo(Args args){
+int setVideo(Args args){
     if(args.size() < 2){return 400;}
     std::string deck = args[0];
     std::string filename = args[1];
@@ -17,6 +17,18 @@ int setvideo(Args args){
         Setting::deckR->setVideoFile(Setting::exePath+"/video/"+filename);
     }
     return 200;
+}
+int setBpm(Args args){
+    if(args.size() < 1){return 400;}
+    try{
+        int bpm = std::stoi(args[0]);
+        Setting::setBpm(bpm);
+        return 200;
+    }catch(std::invalid_argument e){
+        return 400; // 数値への変換が行われない場合
+    }catch(std::out_of_range e) {
+        return 400; // 範囲外の値になった場合
+    }
 }
 
 void readCmd(QString s){
@@ -38,7 +50,9 @@ void readCmd(QString s){
         int exitCode;
 
         if(cmd=="setvideo"){
-            exitCode = setvideo(args);
+            exitCode = setVideo(args);
+        }else if(cmd=="bpm"){
+            exitCode = setBpm(args);
         }
 }
 

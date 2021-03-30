@@ -5,7 +5,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
-
+#include <string>
 #include "cmd.h"
 #include "deck.h"
 #include "setting.h"
@@ -70,4 +70,8 @@ void MainWindow::on_cmdLine_returnPressed()
 void MainWindow::on_LRSlider_sliderMoved(int position)
 {
     Setting::LR = position/100.0;
+}
+
+void MainWindow::updateFrame(){
+    ui->bpmLabel->setText(QString::fromStdString(std::_Floating_to_string("%3.1lf",Setting::bpm)));
 }

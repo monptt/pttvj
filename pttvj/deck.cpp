@@ -17,12 +17,16 @@ Deck::Deck(const QString &text, QWidget *parent) : QLabel(text, parent)
 // クリック時の動作
 void Deck::mouseReleaseEvent(QMouseEvent *e)
 {
-    qDebug() << "Deck clicked";
-
     if(e->button()==Qt::RightButton){
         // 右クリックでファイル読み込み
-        QFileDialog::getOpenFileName(this, tr("Load image or video from File"), "c:/",
-                                     tr("png(*.png);;All Files(*.*)"));
+        QString filePath = QFileDialog::getOpenFileName(this, tr("Load image or video from File"), QString::fromStdString(Setting::exePath),
+                                     tr("File(*.mp4 *.png *.jpg);;Video File(*.mp4);;Image File(*.png *.jpg)"));
+        QString ext = QFileInfo(filePath).suffix().toLower();
+        if(ext=="mp4"){
+            this->setVideoFile(filePath.toStdString());
+        }else if(ext=="png" || ext=="jpg"){
+            this->setImageFile(filePath.toStdString());
+        }
     }
 
     // シグナル送信

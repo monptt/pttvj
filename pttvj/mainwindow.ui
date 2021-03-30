@@ -77,7 +77,7 @@
      <string notr="true">background-color: rgb(157, 255, 157);</string>
     </property>
     <property name="text">
-     <string>BPM: 120</string>
+     <string>120</string>
     </property>
    </widget>
    <widget class="QWidget" name="decksWidget" native="true">

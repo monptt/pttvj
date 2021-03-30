@@ -28,13 +28,6 @@ int main(int argc, char *argv[])
     preview->setGeometry(250, 50, 320, 180);
     preview->show();
 
-    // 画像読み込みテスト
-//    Setting::deckL->setImageFile("p.png");
-//    Setting::deckL->setVideoFile("papapa.mp4");
-//    Setting::deckR->setImageFile("syaka.png");
-//    Setting::deckR->setVideoFile("tomadoi.mp4");
-
-
     // 一定時間ごとに実行する処理を設定
     QTimer *timer = new QTimer(NULL);
     // 時間計測用
@@ -47,6 +40,7 @@ int main(int argc, char *argv[])
         qint64 dt = t-prevt;
         Setting::t_to_process += dt;
 
+        mainWindow->updateFrame();
         Setting::deckL->updateFrame();
         Setting::deckR->updateFrame();
         displayWindow->updateFrame();

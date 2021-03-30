@@ -12,6 +12,7 @@ private:
 public:
     static std::string exePath;
     static double bpm;
+    static void setBpm(int bpm);
 
     static int cvHeight;
     static int cvWidth;
