@@ -26,7 +26,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>500</y>
+      <y>510</y>
       <width>780</width>
       <height>111</height>
      </rect>
@@ -82,7 +82,7 @@ QLineEdit{
 color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string>コマンドを入力</string>
+      <string>Welcome to pttvj</string>
      </property>
     </widget>
    </widget>
@@ -90,7 +90,7 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>240</y>
       <width>580</width>
       <height>260</height>
      </rect>
@@ -231,7 +231,7 @@ border-color: rgb(255,255,255);
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>10</y>
+      <y>20</y>
       <width>190</width>
       <height>480</height>
      </rect>
@@ -273,8 +273,20 @@ background-color: rgb(255, 255, 255, 20);
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSetting">
+    <property name="title">
+     <string>Setting</string>
+    </property>
+    <addaction name="actionCamera"/>
+   </widget>
+   <addaction name="menuSetting"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCamera">
+   <property name="text">
+    <string>Camera</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

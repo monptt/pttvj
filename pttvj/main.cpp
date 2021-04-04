@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     displayWindow->show();
 
     DisplayWindow *preview = new DisplayWindow(mainWindow);
-    preview->setGeometry(100, 10, 16*24, 9*24);
+    preview->setGeometry(100, 30, 16*25, 9*25);
     preview->show();
 
     // 一定時間ごとに実行する処理を設定

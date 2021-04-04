@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QtCore/QDebug>
+#include <QtMultimedia/QCameraInfo>
 #include <QLabel>
 #include <QKeyEvent>
 #include <opencv2/opencv.hpp>
@@ -19,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     ui->setupUi(this);
 
     qDebug() << "MainWindow start";
+
+    // メニューバー
+    connect(ui->actionCamera, SIGNAL(triggered()) , this, SLOT(cameraDialog()) );
 
     // デッキ
     Deck *deckL = new Deck("deckL", ui->deckLWidget);
@@ -57,7 +61,7 @@ void MainWindow::on_cmdBtn_clicked()
     ui->cmdLine->clear();
 
     // コマンドを呼ぶ
-//    cmd::processor(cmdStr);
+    cmd::readCmd(cmdStr);
 }
 
 void MainWindow::on_cmdLine_returnPressed()
@@ -88,7 +92,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     }
 }
 void MainWindow::keyReleaseEvent(QKeyEvent *event){
-    char key = event->key();
+    int key = event->key();
     if(ui->cmdLine->hasFocus()){
 
     }else{
@@ -97,7 +101,19 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event){
 }
 
 
+
 void MainWindow::on_LRSlider_valueChanged(int value)
 {
         Setting::LR = value/100.0;
+}
+
+void MainWindow::cameraDialog(){
+    cv::VideoCapture camera;
+    int device_counts = 0;
+    while ( true ) {
+        if ( !camera.open(device_counts++) ) {
+            break;
+        }
+    }
+    qDebug() << QString::number(device_counts);
 }

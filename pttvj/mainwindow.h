@@ -27,6 +27,8 @@ private slots:
     void keyReleaseEvent(QKeyEvent *event);
     void on_LRSlider_valueChanged(int value);
 
+    void cameraDialog();
+
 private:
     Ui::MainWindow *ui;
 };
