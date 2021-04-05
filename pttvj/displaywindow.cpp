@@ -1,7 +1,7 @@
 #include "displaywindow.h"
 #include "ui_displaywindow.h"
 #include "setting.h"
-
+#include "frameProcessing.h"
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
@@ -41,6 +41,11 @@ void DisplayWindow::updateFrame(){
 
     cv::Mat mixedFrame;
     cv::addWeighted(frameL, (1-Setting::LR), frameR, Setting::LR, 0, mixedFrame);
+
+    // エフェクトをかける
+    if(Setting::effectFlags["grayscale"]){
+        mixedFrame = FrameProcessing::grayscale(mixedFrame);
+    }
 
     this->cvFrame = mixedFrame.clone();
 
