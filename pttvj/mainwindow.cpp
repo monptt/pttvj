@@ -77,6 +77,8 @@ void MainWindow::on_cmdLine_returnPressed()
 void MainWindow::updateFrame(){
     ui->bpmLabel->setText(QString::fromStdString(std::_Floating_to_string("%3.1lf",Setting::bpm)));
     ui->LRSlider->setValue(std::round(Setting::LR*100));
+    // effect関連の同期
+    ui->checkGrayscale->setChecked(Setting::effectFlags["grayscale"]);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
@@ -116,4 +118,11 @@ void MainWindow::cameraDialog(){
         }
     }
     qDebug() << QString::number(device_counts);
+}
+
+
+
+void MainWindow::on_checkGrayscale_stateChanged(int arg1)
+{
+    Setting::effectFlags["grayscale"] = ui->checkGrayscale->isChecked();
 }

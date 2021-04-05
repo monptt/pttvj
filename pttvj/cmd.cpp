@@ -31,6 +31,28 @@ int setBpm(Args args){
     }
 }
 
+// effectのon/off切り替え
+int effectOn(Args args){
+    if(args.size() < 1){return 400;}
+    std::string effectName = args[0];
+    if(Setting::effectFlags.count(effectName)){
+        Setting::effectFlags[effectName] = true;
+        return 200;
+    }else{
+        return 404;
+    }
+}
+int effectOff(Args args){
+    if(args.size() < 1){return 400;}
+    std::string effectName = args[0];
+    if(Setting::effectFlags.count(effectName)){
+        Setting::effectFlags[effectName] = false;
+        return 200;
+    }else{
+        return 404;
+    }
+}
+
 void readCmd(QString s){
         std::string str = s.toStdString();
         std::string cmd;
@@ -53,6 +75,10 @@ void readCmd(QString s){
             exitCode = setVideo(args);
         }else if(cmd=="bpm"){
             exitCode = setBpm(args);
+        }else if(cmd=="on"){
+            exitCode = effectOn(args);
+        }else if(cmd=="off"){
+            exitCode = effectOff(args);
         }
 }
 

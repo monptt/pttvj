@@ -29,6 +29,9 @@ private slots:
 
     void cameraDialog();
 
+
+    void on_checkGrayscale_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };

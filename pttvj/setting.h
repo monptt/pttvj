@@ -1,7 +1,8 @@
 #ifndef SETTING_H
 #define SETTING_H
 
-#include<iostream>
+#include <iostream>
+#include <map>
 #include "deck.h"
 
 class Setting
@@ -11,6 +12,9 @@ private:
 
 public:
     static std::string exePath;
+
+    // エフェクトのON/OFF
+    static std::map<std::string, bool> effectFlags;
 
     static double bpm;
     static void setBpm(int bpm);

@@ -1,6 +1,12 @@
 #include "setting.h"
 #include <QApplication>
 #include <QDebug>
+#include <map>
+
+
+std::map<std::string, bool> Setting::effectFlags = {
+  std::make_pair<std::string, bool>("grayscale",false)
+};
 
 double Setting::bpm = 120;
 void Setting::setBpm(int bpm){
