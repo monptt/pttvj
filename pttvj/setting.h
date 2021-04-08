@@ -16,6 +16,7 @@ public:
     // エフェクトのON/OFF
     static std::map<std::string, bool> effectFlags;
 
+    static int fps;
     static double bpm;
     static void setBpm(int bpm);
 

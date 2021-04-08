@@ -8,6 +8,7 @@ std::map<std::string, bool> Setting::effectFlags = {
   std::make_pair<std::string, bool>("grayscale",false)
 };
 
+int Setting::fps = 24;
 double Setting::bpm = 120;
 void Setting::setBpm(int bpm){
     Setting::bpm = bpm;
