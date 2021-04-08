@@ -272,7 +272,7 @@ background-color: rgb(255, 255, 255, 20);
       </rect>
      </property>
      <property name="text">
-      <string>grayscale</string>
+      <string>Grayscale</string>
      </property>
      <property name="iconSize">
       <size>

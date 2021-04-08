@@ -7,6 +7,8 @@
 
 Deck::Deck(const QString &text, QWidget *parent) : QLabel(text, parent)
 {
+    this->time = 0;
+
     this->setStyleSheet("Deck {background-color:white;}");
     this->setFixedSize(parent->width(),parent->height());
 
@@ -33,14 +35,19 @@ void Deck::mouseReleaseEvent(QMouseEvent *e)
     emit clicked();
 }
 
-void Deck::updateFrame(){
+void Deck::updateFrame(int dt){
+    this->time += dt;
+
     if(this->frameMode=="image"){
         //画像の場合setしてから更新なし
+        this->time = 0;
     }else if(this->frameMode=="video"){
         // 映像ファイルの場合，videoCaptureから読み込み
         cv::Mat newFrame;
-        for(int i=0; i<Setting::t_to_process/33; i++){
+        int time_per_frame = 1000/this->videoCapture.get(CV_CAP_PROP_FPS);
+        while(this->time >= time_per_frame){
             this->videoCapture >> newFrame;
+            this->time -= time_per_frame;
         }
 
         if(!newFrame.empty()){

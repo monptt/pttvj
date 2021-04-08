@@ -35,19 +35,16 @@ int main(int argc, char *argv[])
     etimer.start();
     qint64 prevt = 0;
     QObject::connect(timer, &QTimer::timeout, &app, [&](){
-
         qint64 t = etimer.elapsed();
         qint64 dt = t-prevt;
-        Setting::t_to_process += dt;
+        prevt = t;
 
         mainWindow->updateFrame();
-        Setting::deckL->updateFrame();
-        Setting::deckR->updateFrame();
+        Setting::deckL->updateFrame(dt);
+        Setting::deckR->updateFrame(dt);
         displayWindow->updateFrame();
         preview->updateFrame();
 
-        Setting::t_to_process %= 33;
-        prevt = t;
     });
     timer->start(33);
 

@@ -11,7 +11,7 @@ public:
     void setImageFile(std::string filePath);
     void setVideoFile(std::string filePath);
 
-    void updateFrame();
+    void updateFrame(int dt);
     cv::Mat cvFrame;
 
 private:
@@ -23,7 +23,7 @@ private:
     */
 
     cv::VideoCapture videoCapture;
-
+    int time;   // 一回のupdateFrameで処理すべき残り時間(ms)
 signals:
     // クリック時に発生させるシグナル
     void clicked();

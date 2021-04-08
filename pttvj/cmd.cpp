@@ -12,9 +12,9 @@ int setVideo(Args args){
     std::string deck = args[0];
     std::string filename = args[1];
     if(deck=="L"){
-        Setting::deckL->setVideoFile(Setting::exePath+"/video/"+filename);
+        Setting::deckL->setVideoFile(Setting::exePath+"/VIDEO/"+filename);
     }else if(deck=="R"){
-        Setting::deckR->setVideoFile(Setting::exePath+"/video/"+filename);
+        Setting::deckR->setVideoFile(Setting::exePath+"/VIDEO/"+filename);
     }
     return 200;
 }

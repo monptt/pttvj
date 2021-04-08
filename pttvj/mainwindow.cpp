@@ -90,6 +90,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     }else{
         if(key == Qt::Key_Escape){
             ui->cmdLine->setFocus();
+        }else if(key == Qt::Key_G){
+            Setting::effectFlags["grayscale"] = true;
         }
     }
 }
@@ -98,7 +100,9 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event){
     if(ui->cmdLine->hasFocus()){
 
     }else{
-
+        if(key == Qt::Key_G){
+                    Setting::effectFlags["grayscale"] = false;
+        }
     }
 }
 

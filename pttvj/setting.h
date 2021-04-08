@@ -31,7 +31,6 @@ public:
 
     static void initSetting();
 
-    static int t_to_process;
 };
 
 #endif // SETTING_H
