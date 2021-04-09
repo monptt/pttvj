@@ -1,6 +1,10 @@
 QT       += core gui
 QT       += multimedia
 
+# audio
+CONFIG += MOBILITY
+MOBILITY += multimedia
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++1z
@@ -13,6 +17,7 @@ QMAKE_CXXFLAGS += /std:c++17
 
 SOURCES += \
     FrameProcessing.cpp \
+    audioprocess.cpp \
     cmd.cpp \
     deck.cpp \
     displaywindow.cpp \
@@ -22,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     FrameProcessing.h \
+    audioprocess.h \
     cmd.h \
     deck.h \
     displaywindow.h \

@@ -32,7 +32,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(200, 200, 220, 20);</string>
+     <string notr="true">background-color: rgba(200, 200, 220, 20);</string>
     </property>
     <widget class="QPushButton" name="cmdBtn">
      <property name="geometry">
@@ -78,7 +78,7 @@ QLineEdit{
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255, 0);
+      <string notr="true">background-color: rgba(255, 255, 255, 0);
 color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
@@ -97,7 +97,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">.QWidget#decksWidget{
-background-color: rgb(255, 255, 255, 20);
+background-color: rgba(255, 255, 255, 20);
 }</string>
     </property>
     <widget class="QWidget" name="deckLWidget" native="true">
@@ -238,7 +238,7 @@ border-color: rgb(255,255,255);
     </property>
     <property name="styleSheet">
      <string notr="true">.QWidget#statusWidget{
-background-color: rgb(255, 255, 255, 20);
+background-color: rgba(255, 255, 255, 20);
 }</string>
     </property>
     <widget class="QLabel" name="bpmLabel">

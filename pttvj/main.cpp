@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "displaywindow.h"
 #include "setting.h"
+#include "audioprocess.h"
 
 #include <QApplication>
 #include <QtCore/QDebug>
@@ -13,6 +14,8 @@ void timer();
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    AudioProcess *audioProcess = new AudioProcess();
 
     Setting::initSetting();
     qDebug() << QString::fromStdString(Setting::exePath);
