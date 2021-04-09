@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QAudioInput>
 #include <QObject>
+#include <QByteArray>
 AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
 {
     QAudioFormat format;
@@ -13,14 +14,15 @@ AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
     format.setByteOrder(QAudioFormat::LittleEndian);
     format.setSampleType(QAudioFormat::UnSignedInt);
 
-
     this->input = new QAudioInput(format);
-    QIODevice *in = this->input->start();
-    QAudioInput::connect(in, SIGNAL(readyRead()), this, SLOT(test()));
+    this->inputDevice = this->input->start();
+    QAudioInput::connect(this->inputDevice, SIGNAL(readyRead()), this, SLOT(readBuf()));
 
     qDebug() << "audio start";
 }
 
-void AudioProcess::test(){
-qDebug() << "test";
+void AudioProcess::readBuf(){
+
+QByteArray buf = this->inputDevice->readAll();
+
 }

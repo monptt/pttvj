@@ -9,11 +9,11 @@ class AudioProcess : public QObject
 public:
     explicit AudioProcess(QObject *parent = nullptr);
     QAudioInput *input;
-
+    QIODevice *inputDevice;
 signals:
 
 public slots:
-    void test();
+    void readBuf();
 };
 
 #endif // AUDIOPROCESS_H
