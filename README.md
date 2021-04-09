@@ -6,3 +6,7 @@ VJ app
 ## 開発に必要
 * Qt
 * Visual C++ 2015
+
+## 注意
+* pulgins/audio をコピーしてくる
+* リリース時に必要なdllを置く
