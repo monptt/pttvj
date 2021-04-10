@@ -8,8 +8,8 @@ AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
     QAudioFormat format;
     // Set up the desired format, for example:
     format.setSampleRate(44100);
-    format.setChannelCount(2);
-    format.setSampleSize(8);
+    format.setChannelCount(1);
+    format.setSampleSize(16);
     format.setCodec("audio/pcm");
     format.setByteOrder(QAudioFormat::LittleEndian);
     format.setSampleType(QAudioFormat::UnSignedInt);
@@ -24,5 +24,5 @@ AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
 void AudioProcess::readBuf(){
 
 QByteArray buf = this->inputDevice->readAll();
-
+qDebug() << buf.length();
 }
