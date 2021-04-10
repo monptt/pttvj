@@ -48,6 +48,10 @@ void Deck::updateFrame(int dt){
         while(this->time >= time_per_frame){
             this->videoCapture >> newFrame;
             this->time -= time_per_frame;
+            if(newFrame.empty()){
+                // 動画が終了していたら最初から再生
+                this->videoCapture.set(cv::CAP_PROP_POS_FRAMES, 0);
+            }
         }
 
         if(!newFrame.empty()){

@@ -1,23 +1,28 @@
 #include "glwidget.h"
 #include "setting.h"
+#include "frameProcessing.h"
+#include <algorithm>
 #include <opencv2/opencv.hpp>
 
 #include <QDebug>
 #include <QOpenGLFunctions>
+
 glWidget::glWidget(QWidget *parent) : QOpenGLWidget(parent)
 {
-
+    this->parent = parent;
 }
 
-// 画面クリックでフルスクリーンに
+/* 画面クリックでフルスクリーンに */
 void glWidget::mouseReleaseEvent(QMouseEvent *e){
-    if(this->fullscreen){
-        this->fullscreen = false;
-        this->showNormal();
-        this->setFixedSize(640,360);
-    }else{
-        this->fullscreen = true;
-        this->showFullScreen();
+    if(this->parent == NULL){
+        if(this->fullscreen){
+            this->fullscreen = false;
+            this->showNormal();
+            this->setFixedSize(640,360);
+        }else{
+            this->fullscreen = true;
+            this->showFullScreen();
+        }
     }
 }
 
@@ -47,6 +52,9 @@ void glWidget::paintGL(){
     /* フレームをテクスチャに変換 */
     cv::Mat mixedTexture;
     cv::addWeighted(Setting::deckL->cvFrame, (1-Setting::LR), Setting::deckR->cvFrame, Setting::LR, 0, mixedTexture);
+    if(Setting::effectFlags["grayscale"]){
+        mixedTexture = FrameProcessing::grayscale(mixedTexture);
+    }
     cv::cvtColor(mixedTexture, mixedTexture, CV_BGR2RGB);
     glBindTexture(GL_TEXTURE_2D, this->textureHandles[2]);
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mixedTexture.cols, mixedTexture.rows, GL_RGB, GL_UNSIGNED_BYTE, mixedTexture.data);
@@ -65,6 +73,21 @@ void glWidget::paintGL(){
             glVertex3f(1.0, 1.0, 0);
         glEnd();
     glDisable(GL_TEXTURE_2D);
+
+    /* 波形を表示してみる */
+    if(Setting::effectFlags["waveform"]){
+        glLineWidth(1);
+        glBegin(GL_LINES);
+            glColor3f(1.0, 0.0, 0.0);
+            glVertex2f(-1.0, 0.0);
+            for(int i=0; i<2048; i++){
+                int vol = Setting::waveform[i];
+                glVertex2f(-1+2.0*i/2047, std::min(1.0, vol/32768.0*10));
+            }
+        glEnd();
+    }
+
+
 
         cv::Mat texture0;
         cv::cvtColor(Setting::deckL->cvFrame, texture0, CV_BGR2RGB);

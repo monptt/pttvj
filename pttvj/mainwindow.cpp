@@ -65,6 +65,7 @@ void MainWindow::updateFrame(){
     ui->LRSlider->setValue(std::round(Setting::LR*100));
     // effect関連の同期
     ui->checkGrayscale->setChecked(Setting::effectFlags["grayscale"]);
+    ui->checkWaveform->setChecked(Setting::effectFlags["waveform"]);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
@@ -78,6 +79,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             ui->cmdLine->setFocus();
         }else if(key == Qt::Key_G){
             Setting::effectFlags["grayscale"] = true;
+        }else if(key == Qt::Key_W){
+            Setting::effectFlags["waveform"] = true;
         }
     }
 }
@@ -88,6 +91,8 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event){
     }else{
         if(key == Qt::Key_G){
                     Setting::effectFlags["grayscale"] = false;
+        }else if(key == Qt::Key_W){
+            Setting::effectFlags["waveform"] = false;
         }
     }
 }
@@ -115,4 +120,9 @@ void MainWindow::cameraDialog(){
 void MainWindow::on_checkGrayscale_stateChanged(int arg1)
 {
     Setting::effectFlags["grayscale"] = ui->checkGrayscale->isChecked();
+}
+
+void MainWindow::on_checkWaveform_stateChanged(int arg1)
+{
+    Setting::effectFlags["waveform"] = ui->checkWaveform->isChecked();
 }

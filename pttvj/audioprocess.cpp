@@ -1,4 +1,5 @@
 #include "audioprocess.h"
+#include "setting.h"
 #include <QDebug>
 #include <QAudioInput>
 #include <QObject>
@@ -13,7 +14,7 @@ AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
     format.setSampleSize(16);
     format.setCodec("audio/pcm");
     format.setByteOrder(QAudioFormat::LittleEndian);
-    format.setSampleType(QAudioFormat::UnSignedInt);
+    format.setSampleType(QAudioFormat::SignedInt);
 
     this->input = new QAudioInput(format);
     this->inputDevice = this->input->start();
@@ -26,8 +27,17 @@ void AudioProcess::readBuf(){
     QByteArray buf_byte = this->inputDevice->readAll();
     int N = buf_byte.size()/2;
     int16_t *buf = (int16_t *)buf_byte.data();
-    int16_t M=0;
-    for(int i=0; i<N; i++){
-        M = std::max(M, buf[i]);
+    if(N>=2048){
+        for(int i=0; i<2048; i++){
+            Setting::waveform[i] = buf[N-2048+i];
+        }
+    }else{
+        for(int i=0; i<2048; i++){
+            if(i<2048-N){
+                Setting::waveform[i] = Setting::waveform[N+i];
+            }else{
+                Setting::waveform[i] = buf[i-(2048-N)];
+            }
+        }
     }
 }

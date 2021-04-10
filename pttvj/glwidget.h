@@ -10,6 +10,8 @@ class glWidget : public QOpenGLWidget
 public:
     glWidget(QWidget *parent);
 private:
+    QWidget *parent = NULL;
+
     bool fullscreen = false;
     GLuint textureHandles[3];
 protected:

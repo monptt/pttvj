@@ -26,8 +26,9 @@ public:
     // Deckの実体はmainwindow.cpp内で宣言している
     static Deck *deckL;
     static Deck *deckR;
-
     static double LR;
+
+    static int16_t waveform[2048];
 
     static void initSetting();
 

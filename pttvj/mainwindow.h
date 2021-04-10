@@ -32,6 +32,8 @@ private slots:
 
     void on_checkGrayscale_stateChanged(int arg1);
 
+    void on_checkWaveform_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };

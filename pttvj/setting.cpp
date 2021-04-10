@@ -14,7 +14,6 @@ void Setting::setBpm(int bpm){
     Setting::bpm = bpm;
 }
 
-double Setting::LR=0;
 
 int Setting::cvWidth = 16*100;
 int Setting::cvHeight = 9*100;
@@ -23,6 +22,9 @@ std::string Setting::exePath = "";
 
 Deck *Setting::deckL = NULL;
 Deck *Setting::deckR = NULL;
+double Setting::LR=0;
+
+int16_t Setting::waveform[2048] = {};
 
 void Setting::initSetting(){
     // 実行ファイルのパスを取得
