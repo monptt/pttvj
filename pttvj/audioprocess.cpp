@@ -3,6 +3,7 @@
 #include <QAudioInput>
 #include <QObject>
 #include <QByteArray>
+#include <algorithm>
 AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
 {
     QAudioFormat format;
@@ -22,7 +23,11 @@ AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
 }
 
 void AudioProcess::readBuf(){
-
-QByteArray buf = this->inputDevice->readAll();
-//qDebug() << buf.length();
+    QByteArray buf_byte = this->inputDevice->readAll();
+    int N = buf_byte.size()/2;
+    int16_t *buf = (int16_t *)buf_byte.data();
+    int16_t M=0;
+    for(int i=0; i<N; i++){
+        M = std::max(M, buf[i]);
+    }
 }
