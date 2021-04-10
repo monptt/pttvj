@@ -11,7 +11,7 @@ public:
     glWidget(QWidget *parent);
 private:
     bool fullscreen = false;
-    GLuint textureHandles[2];
+    GLuint textureHandles[3];
 protected:
     void mouseReleaseEvent(QMouseEvent *e);    // クリック時に呼ばれる
 

@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "displaywindow.h"
 #include "setting.h"
 #include "audioprocess.h"
 #include "glwidget.h"
@@ -25,12 +24,11 @@ int main(int argc, char *argv[])
     mainWindow->show();
 
     glWidget *glwidget = new glWidget(NULL);
+    glwidget->setFixedSize(640,360);
     glwidget->show();
 
-    DisplayWindow *displayWindow = new DisplayWindow(NULL);
-    displayWindow->show();
 
-    DisplayWindow *preview = new DisplayWindow(mainWindow);
+    glWidget *preview = new glWidget(mainWindow);
     preview->setGeometry(100, 30, 16*25, 9*25);
     preview->show();
 
@@ -48,10 +46,9 @@ int main(int argc, char *argv[])
         mainWindow->updateFrame();
         Setting::deckL->updateFrame(dt);
         Setting::deckR->updateFrame(dt);
-        displayWindow->updateFrame();
-        preview->updateFrame();
 
         glwidget->update();
+        preview->update();
 
     });
     timer->start(33);

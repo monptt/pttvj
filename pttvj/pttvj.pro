@@ -19,7 +19,6 @@ SOURCES += \
     audioprocess.cpp \
     cmd.cpp \
     deck.cpp \
-    displaywindow.cpp \
     glwidget.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -30,13 +29,11 @@ HEADERS += \
     audioprocess.h \
     cmd.h \
     deck.h \
-    displaywindow.h \
     glwidget.h \
     mainwindow.h \
     setting.h
 
 FORMS += \
-    displaywindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
