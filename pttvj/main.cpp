@@ -51,6 +51,8 @@ int main(int argc, char *argv[])
         displayWindow->updateFrame();
         preview->updateFrame();
 
+        glwidget->update();
+
     });
     timer->start(33);
 

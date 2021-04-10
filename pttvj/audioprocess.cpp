@@ -24,5 +24,5 @@ AudioProcess::AudioProcess(QObject *parent) : QObject(parent)
 void AudioProcess::readBuf(){
 
 QByteArray buf = this->inputDevice->readAll();
-qDebug() << buf.length();
+//qDebug() << buf.length();
 }
