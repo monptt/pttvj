@@ -2,14 +2,15 @@
 #include "displaywindow.h"
 #include "setting.h"
 #include "audioprocess.h"
-
+#include "glwidget.h"
 #include <QApplication>
 #include <QtCore/QDebug>
 #include <QtCore/QTimer>
 
 #include <QElapsedTimer>
 
-void timer();
+#include <QGLWidget>
+
 
 int main(int argc, char *argv[])
 {
@@ -23,6 +24,8 @@ int main(int argc, char *argv[])
     MainWindow *mainWindow = new MainWindow(NULL);
     mainWindow->show();
 
+    glWidget *glwidget = new glWidget(NULL);
+    glwidget->show();
 
     DisplayWindow *displayWindow = new DisplayWindow(NULL);
     displayWindow->show();

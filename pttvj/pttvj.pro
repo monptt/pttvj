@@ -1,9 +1,8 @@
 QT       += core gui
 QT       += multimedia
 
-# audio
-CONFIG += MOBILITY
-MOBILITY += multimedia
+QT += opengl
+LIBS += -lOpenGL32
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,6 +20,7 @@ SOURCES += \
     cmd.cpp \
     deck.cpp \
     displaywindow.cpp \
+    glwidget.cpp \
     main.cpp \
     mainwindow.cpp \
     setting.cpp
@@ -31,6 +31,7 @@ HEADERS += \
     cmd.h \
     deck.h \
     displaywindow.h \
+    glwidget.h \
     mainwindow.h \
     setting.h
 
