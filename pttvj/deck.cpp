@@ -13,7 +13,7 @@ Deck::Deck(const QString &text, QWidget *parent) : QLabel(text, parent)
     this->setFixedSize(parent->width(),parent->height());
 
     // 初期画像をセット
-    this->setImageFile(Setting::exePath+"/resources/"+"empty.jpg");
+    this->setImageFile(Setting::exePath+"/resources/"+"empty.png");
 }
 
 // クリック時の動作

@@ -45,6 +45,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 # OpenCV settings
 DEPENDPATH  += "C:\opencv\build\include"
 INCLUDEPATH += "C:\opencv\build\include"
-LIBS += "C:\opencv\build\x64\vc15\lib\opencv_world3413.lib"
-LIBS += "C:\opencv\build\x64\vc15\lib\opencv_world3413d.lib"
+LIBS += "C:\opencv\build\x64\vc15\lib\opencv_world3414.lib"
+LIBS += "C:\opencv\build\x64\vc15\lib\opencv_world3414d.lib"
 
